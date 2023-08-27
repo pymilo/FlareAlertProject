@@ -10,6 +10,7 @@
  - git restore --staged file.txt # to unstage file.txt
  - git status # status of the repository
  - git log # show All who, when and tags of every commit of the project
+ - git log --stat # which files were changed
  - git log file.txt # same as show but for a file
  - git show  # all changes made in history (who, when)
  - git show file.txt # show all changes made on file.txt in history
@@ -17,7 +18,7 @@
  - git checkout # bring a change to my local folder from the repository
  - git push # send to a remote repository
  - git pull # brings everything which is on a remote repository
- - git reset tag # go back to a previous version of the repository
+ - git reset HEAD # unstage any file you added. They return to work folder
  - git reset tag --hard # everything returns to the tag's prev version
  - git reset tag --soft # returns to prev vers but keep thing on stage
  
@@ -32,6 +33,12 @@
  - When doing "git show file.txt", the diff --git a/file.txt b/file.txt
    shows the diff between the previous version (a) with HEAD (b).
 
+ - git checkout tag file.txt brings only file.txt to my work folder.
+   I can edit file.txt and add and commit it in a brand new commit.
+
+ - git reset HEAD remove from stage any file you added. They return to
+   your working directory for you to edit them, add them again and then
+   submit to the local repository
 
 
 
