@@ -14,8 +14,13 @@
  - git show  # all changes made in history (who, when)
  - git show file.txt # show all changes made on file.txt in history
  - git diff tagA tagB # tagA: old version and tagB: new version
+ - git checkout # bring a change to my local folder from the repository
  - git push # send to a remote repository
  - git pull # brings everything which is on a remote repository
+ - git reset tag # go back to a previous version of the repository
+ - git reset tag --hard # everything returns to the tag's prev version
+ - git reset tag --soft # returns to prev vers but keep thing on stage
+ 
 
  - When doing "git log file.txt", the output has a structure like
    commit cd5883626cb6cbb0fb8c3b0be1553e2fc6499fb8
