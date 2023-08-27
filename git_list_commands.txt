@@ -24,8 +24,10 @@
  - git pull # brings everything from remote repo to my local repo & work folder 
  - git fetch # brings things to local repo but not to my work folder
  - git merge # merge the latest local repo with my work folder
+ - git merge # the branch from where I do merge becomes the primary
  - git branch branch01 # creates branch01
  - git checkout branch01 # move to branch01
+ - test line
 
  - When doing "git log file.txt", the output has a structure like
    commit cd5883626cb6cbb0fb8c3b0be1553e2fc6499fb8
