@@ -1,3 +1,4 @@
+# test: this line was added from branch01
  - git init # create repository
  - git config # shows all configuration
  - git config -l # Default configuration

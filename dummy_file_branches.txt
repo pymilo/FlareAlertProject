@@ -10,5 +10,7 @@ Here a line that is supposed to be an edit of
 this part of the document. This was created in
 the branch01 branch.
 
+# Also this line was added from branch01
+
 **********************************************
 
