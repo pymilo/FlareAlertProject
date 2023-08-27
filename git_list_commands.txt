@@ -1,0 +1,40 @@
+ - git init
+ - git config # shows all configuration
+ - git config -l # Default configuration
+ - git config -l --show-origin # where all conf are safed (advanced)
+ - git config --global # make changes on all global users 
+ - git add file.txt
+ - git commit -m "version xx"
+ - git add . 
+ - git add -u # Add only modified files No Untracked
+ - git restore --staged file.txt # to unstage file.txt
+ - git status # status of the repository
+ - git log file.txt # same as show but for a file
+ - git show  # all changes made in history (who, when)
+ - git show file.txt # show all changes made on file.txt in history
+ - git push # send to a remote repository
+ - git pull # brings everything which is on a remote repository
+
+ - When doing "git log file.txt", the output has a structure like
+   commit cd5883626cb6cbb0fb8c3b0be1553e2fc6499fb8
+   This weird number is the TAG of the commit
+
+ - commit 5cc8319735d69010ce0c566566b181a5fc1dfb39 (HEAD -> main)
+   HEAD always means that is the most recent commit in the main branch
+
+ - When doing "git show file.txt", the diff --git a/file.txt b/file.txt
+   shows the diff between the previous version (a) with HEAD (b).
+
+
+
+
+
+Other commands to fully understand git
+ - git reflog
+ - git flow
+ - git merge
+ - git rebase
+ - git checkout
+ - git branch
+ - git tag
+

@@ -9,4 +9,3 @@ to better use git and GitHub.
 Thanks for your pacience.
 
 Adding a temporal new line here to be edited later.
-
