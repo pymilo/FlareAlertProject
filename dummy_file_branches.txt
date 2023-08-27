@@ -6,5 +6,9 @@ This is the space where I'm suppose to change
 the first part of the document. Only branch_01
 should change things here.
 
+Here a line that is supposed to be an edit of
+this part of the document. This was created in
+the branch01 branch.
+
 **********************************************
 
