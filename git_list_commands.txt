@@ -12,16 +12,20 @@
  - git log # show All who, when and tags of every commit of the project
  - git log --stat # which files were changed
  - git log file.txt # same as show but for a file
+ - git log -n 5 --author=Salvador # show only the 5 last commits made by Salvador
  - git show  # all changes made in history (who, when)
  - git show file.txt # show all changes made on file.txt in history
  - git diff tagA tagB # tagA: old version and tagB: new version
  - git checkout # bring a change to my local folder from the repository
- - git push # send to a remote repository
- - git pull # brings everything which is on a remote repository
  - git reset HEAD # unstage any file you added. They return to work folder
  - git reset tag --hard # everything returns to the tag's prev version
  - git reset tag --soft # returns to prev vers but keep thing on stage
- 
+ - git push # send to a remote repository
+ - git pull # brings everything from remote repo to my local repo & work folder 
+ - git fetch # brings things to local repo but not to my work folder
+ - git merge # merge the latest local repo with my work folder
+ - git branch branch01 # creates branch01
+ - git checkout branch01 # move to branch01
 
  - When doing "git log file.txt", the output has a structure like
    commit cd5883626cb6cbb0fb8c3b0be1553e2fc6499fb8
@@ -32,6 +36,10 @@
 
  - When doing "git show file.txt", the diff --git a/file.txt b/file.txt
    shows the diff between the previous version (a) with HEAD (b).
+
+ - Also when doing a "git show," the first line shows the commit tag and
+   where the HEAD is pointing to in the current branch. When two branches
+   have the same head, HEAD points to both in this first line of show.
 
  - git checkout tag file.txt brings only file.txt to my work folder.
    I can edit file.txt and add and commit it in a brand new commit.
