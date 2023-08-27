@@ -1,4 +1,4 @@
- - git init
+ - git init # create repository
  - git config # shows all configuration
  - git config -l # Default configuration
  - git config -l --show-origin # where all conf are safed (advanced)
@@ -9,9 +9,11 @@
  - git add -u # Add only modified files No Untracked
  - git restore --staged file.txt # to unstage file.txt
  - git status # status of the repository
+ - git log # show All who, when and tags of every commit of the project
  - git log file.txt # same as show but for a file
  - git show  # all changes made in history (who, when)
  - git show file.txt # show all changes made on file.txt in history
+ - git diff tagA tagB # tagA: old version and tagB: new version
  - git push # send to a remote repository
  - git pull # brings everything which is on a remote repository
 
