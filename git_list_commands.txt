@@ -24,6 +24,7 @@
  - git pull # brings everything from remote repo to my local repo & work folder 
  - git fetch # brings things to local repo but not to my work folder
  - git merge # merge the latest local repo with my work folder
+ - git merge # the branch from where I do merge becomes the primary
  - git branch branch01 # creates branch01
  - git checkout branch01 # move to branch01
  - test line
