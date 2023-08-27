@@ -1,4 +1,3 @@
-# Making this line frm branch main
  - git init # create repository
  - git config # shows all configuration
  - git config -l # Default configuration
