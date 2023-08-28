@@ -15,4 +15,10 @@ No line here.
 This line was added directly on GitHub on the web.
 
 **********************************************
+            Second Part
+**********************************************
+
+Editing this second part from branch branch02
+
+**********************************************
 
