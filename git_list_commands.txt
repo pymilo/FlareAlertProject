@@ -22,7 +22,9 @@
  - git reset tag --soft # returns to prev vers but keep thing on stage
  - git push # send to a remote repository
  - git pull # brings everything from remote repo to my local repo & work folder 
+ - git pull origin <localbranch> # to bring things from origin to a branch
  - git fetch # brings things to local repo but not to my work folder
+ - git fetch <remote> <localbranch> # be explicit from where to where to fetch
  - git merge # merge the latest local repo with my work folder
  - git branch branch01 # creates branch01
  - git checkout branch01 # move to branch01
@@ -50,7 +52,8 @@
    your working directory for you to edit them, add them again and then
    submit to the local repository
 
-
+ - With a git fetch, you can finish editing files locally, commit your files 
+   and then do a git merge to synchronize your updates with the fetched files
 
 
 Other commands to fully understand git
