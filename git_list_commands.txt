@@ -34,6 +34,7 @@
  - git show-branch --all # show all branches local and remote
  - gitk # showd the above history in a new super visual fancy window
  - git merge branch01 # do this from the main branch to bring branch01
+ - git remote add upstream # to set a remote from a fork (upstream)
 
  - When doing "git log file.txt", the output has a structure like
    commit cd5883626cb6cbb0fb8c3b0be1553e2fc6499fb8
