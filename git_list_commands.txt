@@ -35,11 +35,18 @@
  - gitk # showd the above history in a new super visual fancy window
  - git merge branch01 # do this from the main branch to bring branch01
  - git remote add upstream # to set a remote from a fork (upstream)
+ - git branch -r # list of all remote branch
+ - git branch -a # list all branches (local and remote)
  - git rebase # re-write history of a brach. Use only locally (emergence)
  - git stash # temp store changes folder while move I move other branch 
  - git stash pop # undo the stash
  - git stash drop # in case I don't want to keep the codes I put on stash
  - git stash branch <newbranchname> # put all stash into a new branch
+ - git reflog # reference log (has ALL logs). 
+ - git reset --HARD <hash> # returns everything to repo when was in hash 
+ - git grep -n <word> # look for a particular word in repo (n line)
+ - git log -S <word> # look for <word> in the history of commits
+
 
 
  - When doing "git log file.txt", the output has a structure like
