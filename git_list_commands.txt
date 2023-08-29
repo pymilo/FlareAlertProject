@@ -35,6 +35,12 @@
  - gitk # showd the above history in a new super visual fancy window
  - git merge branch01 # do this from the main branch to bring branch01
  - git remote add upstream # to set a remote from a fork (upstream)
+ - git rebase # re-write history of a brach. Use only locally (emergence)
+ - git stash # temp store changes folder while move I move other branch 
+ - git stash pop # undo the stash
+ - git stash drop # in case I don't want to keep the codes I put on stash
+ - git stash branch <newbranchname> # put all stash into a new branch
+
 
  - When doing "git log file.txt", the output has a structure like
    commit cd5883626cb6cbb0fb8c3b0be1553e2fc6499fb8
@@ -60,13 +66,14 @@
  - With a git fetch, you can finish editing files locally, commit your files 
    and then do a git merge to synchronize your updates with the fetched files
 
+ - got stash is particularly useful when I'm modifying code that existed
+   in a previous branch. Example, I deleted accidentally an important
+   piece of code. I stash in the current branch (no add, nor commit needed)
+   I can checkout to previous branch to see how things were, and come back
+   via checkout and do stash pop to continue working.
+
 
 Other commands to fully understand git
  - git reflog
  - git flow
- - git merge
- - git rebase
- - git checkout
- - git branch
- - git tag
 
