@@ -1,2 +1,4 @@
 pandas==2.0.1
 bokeh==2.4.3
+Flask==2.2.2
+wget==3.2
