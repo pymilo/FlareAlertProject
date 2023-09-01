@@ -4,7 +4,7 @@ import json
 import pandas as pd
 from bokeh.io import curdoc
 from bokeh.layouts import column
-from bokeh.models import Button, LinearAxis, LogAxis, FixedTicker, ColumnDataSource
+from bokeh.models import ColumnDataSource, Range1d, LogAxis, FuncTickFormatter
 from bokeh.plotting import figure
 
 # Define primary and secondary URLs
@@ -19,7 +19,7 @@ def fetch_data(url):
 
     with open(json_file) as f:
         df = pd.DataFrame(json.load(f))
-        df.loc[:, 'time_tag'] = pd.to_datetime(df['time_tag'])
+        df.loc[:, 'time_tag'] = pd.to_datetime(df['time_tag'], format='ISO8601')
 
     return df
 
@@ -45,7 +45,10 @@ sources = {
     "secondary_10_08": ColumnDataSource(data=dict(time_tag=secondary_10_08['time_tag'][-100:], flux=secondary_10_08['flux'][-100:]))
 }
 
-p = figure(x_axis_type="datetime", title="Real-time Xrays Plot", width=800, height=400)
+p = figure(x_axis_type="datetime", y_axis_type="log", title="Real-time Xrays Plot", width=800, height=400, y_range=(1e-8, 1e-4))
+
+# Add the y-axis label
+p.yaxis.axis_label = "Watts • m⁻²"
 
 # Plot data with specified colors
 p.line(x='time_tag', y='flux', source=sources["primary_05_04"], line_width=2, color='blue', legend_label="GOES-16 (0.05-0.4nm)")
@@ -65,46 +68,32 @@ def update_data():
     # For simplicity, using the latest time from primary dataset
     latest_time = primary_05_04['time_tag'].iloc[-1].strftime('%Y-%m-%d %H:%M:%S')
     p.title.text = f"Real-time Xray plot (Last update: {latest_time})"
-    
-    if is_log:
-        p.y_range.start = 1e-9
-        p.y_range.end = 1e-3
-    #adjust_yaxis()
 
-def adjust_yaxis():
-    if is_log:
-        p.y_range.start = 1e-9
-        p.y_range.end = 1e-3
-        p.yaxis[0].ticker = FixedTicker(ticks=[1e-9, 1e-8, 1e-7, 1e-6, 1e-5, 1e-4, 1e-3])
-    else:
-        all_data = []
-        for key, source in sources.items():
-            all_data.extend(source.data['flux'])
-        max_val = max(all_data)
-        p.y_range.start = 0
-        p.y_range.end = max_val
+# Create the secondary Y-axis
+extra_y_ranges = {}
+extra_y_ranges["FlareClass"] = Range1d(start=1e-8, end=1e-4)
 
+# Add the extra y-axis to the figure
+p.add_layout(LogAxis(y_range_name="FlareClass", axis_label="Xray Flare Class"), 'right')
+
+# Specify the tick labels and values for the flare classes
+flare_class_ticks = {
+    1e-7: "B",
+    1e-6: "C",
+    1e-5: "M",
+}
+
+# Apply the custom ticks to the secondary y-axis
+p.extra_y_ranges = extra_y_ranges
+
+code = """
+    const labels = {1e-8: "A", 1e-7: "B", 1e-6: "C", 1e-5: "M", 1e-4: "X"};
+    return labels[tick] || "";
+"""
+
+p.right[0].formatter = FuncTickFormatter(code=code)
 
 # Update data every 5 seconds
 curdoc().add_periodic_callback(update_data, 5000)
 
-is_log = False
-
-def toggle_yaxis():
-    global is_log
-    if is_log:
-        p.yaxis[0].axis_label = "Flux"
-        p.yaxis[0].ticker.base = 10
-        p.yaxis[0].ticker = LinearAxis().ticker
-    else:
-        p.yaxis[0].axis_label = "Log(Flux)"
-        p.yaxis[0].ticker.base = 10
-        p.yaxis[0].ticker = LogAxis().ticker
-    is_log = not is_log
-
-    adjust_yaxis()  # Adjust y-axis after toggling
-
-button = Button(label="Toggle Y-Axis (Linear/Log)", button_type="default")
-button.on_click(toggle_yaxis)
-
-curdoc().add_root(column(button, p))
+curdoc().add_root(p)
